@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/models/note_database.dart';
 import 'package:notes_app/pages/notes_page.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
 
@@ -9,7 +10,12 @@ void main() async {
   await NoteDatabase.initialize();
 
 
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => NoteDatabase(),
+      child: const MainApp(),
+    )
+  );
 }
 
 class MainApp extends StatelessWidget {
