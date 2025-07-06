@@ -104,6 +104,7 @@ class _NotesPageState extends State<NotesPage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text(
           "Notes",
           style: TextStyle(
@@ -134,12 +135,13 @@ class _NotesPageState extends State<NotesPage> {
                   onPressed: () => updateNote(note),
                   icon: Icon(Icons.edit)
                 ),
+
+                // delete button
                 IconButton(
                   onPressed: () => deleteNote(note.id),
                   icon: Icon(Icons.delete)
                 )
-
-                // delete button
+                
               ],
             ),
           );
