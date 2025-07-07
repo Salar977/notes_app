@@ -32,13 +32,13 @@ class NoteTile extends StatelessWidget {
           children: [
             // edit button
             IconButton(
-              onPressed: () => onEditPressed,
+              onPressed: onEditPressed,
               icon: const Icon(Icons.edit)
             ),
 
             // delete button
             IconButton(
-              onPressed: () => onDeletePressed,
+              onPressed: onDeletePressed,
               icon: const Icon(Icons.delete)
             ),
           ],

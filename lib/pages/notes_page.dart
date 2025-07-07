@@ -30,8 +30,9 @@ class _NotesPageState extends State<NotesPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         content: TextField(
-          controller: textController,
+          controller: textController
         ),
         actions: [
           // create button
@@ -66,10 +67,10 @@ class _NotesPageState extends State<NotesPage> {
   void updateNote(Note note) {
     // pre-fill the current note text
     textController.text = note.text;
-
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         content: TextField(
           controller: textController,
         ),
@@ -92,7 +93,8 @@ class _NotesPageState extends State<NotesPage> {
 
   // delete note
   void deleteNote(int id) {
-    context.read<NoteDatabase>().deleteNote(id);
+    final noteDatabase = context.read<NoteDatabase>();
+    noteDatabase.deleteNote(id);
   }
 
 
