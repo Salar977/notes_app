@@ -21,28 +21,60 @@ class SettingsPage extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
         margin: EdgeInsets.only(left: 25, right: 25),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            // dark mode
-            Text(
-              'Dark Mode',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Theme.of(context).colorScheme.inversePrimary
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // dark mode
+                Text(
+                  'Dark Mode',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: Provider.of<ThemeProvider>(context).fontSize,
+                    color: Theme.of(context).colorScheme.inversePrimary
+                  ),
+                ),
+            
+                // switch toogle
+                CupertinoSwitch(
+                  value: Provider.of<ThemeProvider>(context, listen: false).isDarkMode,
+                  onChanged: (value) => Provider.of<ThemeProvider>(
+                    context,
+                    listen: false
+                  ).toggleTheme()
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 20,),
+
+            // Font Size
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Font Size',
+                    style: TextStyle(
+                      fontSize: Provider.of<ThemeProvider>(context).fontSize,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
+                  ),
+                  Slider(
+                    value: Provider.of<ThemeProvider>(context).fontSize,
+                    min: 10,
+                    max: 30,
+                    divisions: 10,
+                    label: Provider.of<ThemeProvider>(context).fontSize.round().toString(),
+                    onChanged: (value) =>
+                        Provider.of<ThemeProvider>(context, listen: false).fontSize = value,
+                    activeColor: Theme.of(context).colorScheme.inversePrimary,
+                    //inactiveColor: inverseColor.withOpacity(0.4),
+                  ),
+                ],
               ),
-            ),
-        
-            // switch toogle
-            CupertinoSwitch(
-              value: Provider.of<ThemeProvider>(context, listen: false).isDarkMode,
-              onChanged: (value) => Provider.of<ThemeProvider>(
-                context,
-                listen: false
-              ).toggleTheme()
-            ),
           ],
         ),
       ),

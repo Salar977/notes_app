@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/components/note_settings.dart';
+import 'package:notes_app/theme/theme_provider.dart';
 import 'package:popover/popover.dart';
+import 'package:provider/provider.dart';
 
 class NoteTile extends StatelessWidget {
   final String text;
@@ -26,7 +28,7 @@ class NoteTile extends StatelessWidget {
         title: Text(
           text,
           style: TextStyle(
-            fontSize: 18,
+            fontSize: Provider.of<ThemeProvider>(context).fontSize,
           ),
         ),
         trailing: Builder(
