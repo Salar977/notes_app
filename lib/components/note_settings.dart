@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/theme/theme_provider.dart';
-import 'package:provider/provider.dart';
 
 class NoteSettings extends StatelessWidget {
   final void Function()? onEditTap;
